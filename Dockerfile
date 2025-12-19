@@ -1,4 +1,5 @@
-FROM selenium/standalone-chrome:4.39.0-20251202
+ARG BASE=selenium/standalone-chrome:4.39.0-20251202
+FROM ${BASE}
 
 USER root
 
