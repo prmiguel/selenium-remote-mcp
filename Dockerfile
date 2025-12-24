@@ -12,7 +12,7 @@ RUN apt update && apt install curl -y \
 RUN cat <<EOF >> /etc/supervisor/conf.d/selenium.conf
 [program:remote-selenium-mcp]
 priority=20
-command=bash -c "npx -y supergateway --stdio 'npx -y @angiejones/mcp-selenium' --outputTransport streamableHttp --stateful --sessionTimeout 60000 --port 8000"
+command=bash -c "nohup npx -y supergateway --stdio 'npx -y @angiejones/mcp-selenium' --outputTransport streamableHttp --stateful --sessionTimeout 60000 --port 8000 > /tmp/supergateway.log 2>&1 &"
 stopasgroup = true
 autostart=true
 autorestart=false
