@@ -7,7 +7,8 @@ RUN apt update && apt install curl -y \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - \
     && apt install nodejs -y \
     && npm install -g @angiejones/mcp-selenium \
-    && npm install -g supergateway@3.4.3
+    && npm install -g supergateway@3.4.3 \
+    && chown -R 1200:1201 "/home/seluser/.npm"
 
 RUN cat <<EOF >> /etc/supervisor/conf.d/selenium.conf
 [program:remote-selenium-mcp]
